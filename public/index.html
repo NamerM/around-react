@@ -1,43 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" window.top="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Around The U.S.</title>
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+  <meta
+    name="Practicum-Yandex, Sprint4, Project"
+    content="Practicum by Yandex Sprint4 Project"/>
+</head>
+<body className="page">
+  <section className="popup popup_type_profile" id="popup-template">
+    <div className="popup__square">
+      <form name="profileForm" className="popup__form popup__form_edit" novalidate>
+        <h1 className="popup__title">Edit Profile</h1>
+        <label className="popup__formfield">
+        <input className="popup__input popup__input_type_name" type="text" placeholder="Name" id="name" minlength="2" maxlength="40" required>
+        <span id="name-error" className="popup__input-error"></span>
+      </label>
+      <label className="popup__formfield">
+        <input className="popup__input popup__input_type_profession" type="text" placeholder="Profession" id="profession" minlength="2" maxlength="200" required>
+        <span id="profession-error" className="popup__input-error"> </span>
+      </label>
+        <button type='submit' className="popup__save">Save</button>
+        <button type='button' className='popup__close'></button>
+      </form>
+    </div>
+  </section>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+  <section className="popup popup_type_add-card" id="popup-template-form">
+    <div className="popup__square">
+      <form name="add-cards" className="popup__form popup__form_cards" novalidate>
+        <h1 className="popup__title">New Place</h1>
+        <label className="popup__formfield">
+          <input className="popup__input popup__input_type_title" type="text" placeholder="Title" id="cardTitle" name="cardTitle" minlength="1" maxlength="30" required>
+         <span id="cardTitle-error" className="popup__input-error"></span>
+        </label>
+        <label className="popup__formfield">
+          <input className="popup__input popup__input_type_link" type="url" placeholder="Link"  id="cardImageLink" name="cardImageLink"  required>
+          <span id="cardImageLink-error" className="popup__input-error"></span>
+        </label>
+        <button type='submit' className="popup__save">Create</button>
+        <button type='button' className='popup__close popup__close_add'></button>
+      </form>
+    </div>
+  </section>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+  <section className="popup popup_type_avatar-change" id="popup-template-avatar">
+    <div className="popup__square">
+      <form name="avatarChange" className="popup__form popup__form_avatar" novalidate>
+        <h1 className="popup__title">Change Profile Picture</h1>
+        <label className="popup__formfield">
+          <input className="popup__input popup__input_type_link" type="url" placeholder="Picture Url"  id="link" name="link"  required>
+          <span id="link-error" className="popup__input-error"></span>
+        </label>
+        <button type='submit' className="popup__save">Save</button>
+        <button type='button' className='popup__close popup__close_add'></button>
+      </form>
+    </div>
+  </section>
+
+  <section className="popup popup_type_confirm" id="popup-template-confirm">
+    <div className="popup__square">
+      <form name="confirmDelete" className="popup__form popup__form_confirmDelete">
+        <h1 className="popup__title popup__title_confirmDelete">Are you sure?</h1>
+        <button type='submit' className="popup__save popup__save_confirmDelete">Yes</button>
+        <button type='button' className='popup__close popup__close_add'></button>
+      </form>
+    </div>
+  </section>
+
+  <section className="popup popup_type-preview" id="popup-image">
+    <div className="popup__square popup__square_preview">
+      <button type='button' className='popup__close popup__close_preview'></button>
+      <img className="popup__image" src=" " alt=" ">
+      <p className="popup__subtitle"></p>
+    </div>
+  </section>
+  <div className="page__content">
+    <header className="header">
+      <img className="header__logo" src="<%=require ('../src/images/logo-aroundtheus.svg')%>" alt="Logo text writes Around the U.S." />
+    </header>
+    <main className="content">
+      <section className="profile">
+        <div className="profile__image" src="<%=require ('../src/images/image.jpg')>"></div>
+
+        <div className="profile__info">
+          <div className="profile__line-header">
+            <h2 className="profile__header">Cousteau </h2>
+            <button type="button" className="profile__button"></button>
+          </div>
+          <p className="profile__profession">Explorer</p>
+        </div>
+
+        <button  type="button" className="add-button"></button>
+      </section>
+
+      <section className="elements page__section">
+        <ul className="elements__cards"></ul>
+      </section>
+    </main>
+    <footer className="footer"><p className="footer__text">© 2022 Around The U.S.</p></footer>
+    <template id="card-template">
+      <li className="elements__card">
+        <button className="elements__button-delete" type="button"></button>
+        <img className="elements__image" src=" " alt="" />
+        <div className="elements__handle">
+          <h2 className="elements__card-text"></h2>
+          <div className="elements__handle_likecolumn">
+            <button className="elements__button-like" type="button"></button>
+            <p className="elements__card_likes"></p>
+          </div>
+        </div>
+      </li>
+    </template>
+  </div>
+
+</body>
 </html>
