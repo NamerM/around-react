@@ -1,11 +1,12 @@
 import React from 'react';
-import ProfileImage from '../images/image.jpg';
+import profileImage from '../images/image.jpg';
+//import profileButton from '../images/edit-pen.svg';
 
 function Main() {
 return (
   <main className="content">
     <section className="profile">
-      <img className="profile__image" src={ProfileImage} alt="Profile picture"/>
+      <img className="profile__image" src={profileImage} alt="Profile picture" />
 
       <div className="profile__info">
         <div className="profile__line-header">
