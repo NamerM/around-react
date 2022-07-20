@@ -5,112 +5,109 @@
   <meta http-equiv="X-UA-Compatible" window.top="IE=edge"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Around The U.S.</title>
-
-  <meta
-    name="Practicum-Yandex, Sprint4, Project"
-    content="Practicum by Yandex Sprint4 Project"/>
+  <meta name="Practicum-Yandex, Sprint4, Project" content="Practicum by Yandex Sprint4 Project"/>
 </head>
-<body className="page">
-  <section className="popup popup_type_profile" id="popup-template">
-    <div className="popup__square">
-      <form name="profileForm" className="popup__form popup__form_edit" novalidate>
-        <h1 className="popup__title">Edit Profile</h1>
-        <label className="popup__formfield">
-        <input className="popup__input popup__input_type_name" type="text" placeholder="Name" id="name" minlength="2" maxlength="40" required>
-        <span id="name-error" className="popup__input-error"></span>
+<body class="page">
+  <section class="popup popup_type_profile" id="popup-template">
+    <div class="popup__square">
+      <form name="profileForm" class="popup__form popup__form_edit" novalidate>
+        <h1 class="popup__title">Edit Profile</h1>
+        <label class="popup__formfield">
+        <input class="popup__input popup__input_type_name" type="text" placeholder="Name" id="name" minlength="2" maxlength="40" required>
+        <span id="name-error" class="popup__input-error"></span>
       </label>
-      <label className="popup__formfield">
-        <input className="popup__input popup__input_type_profession" type="text" placeholder="Profession" id="profession" minlength="2" maxlength="200" required>
-        <span id="profession-error" className="popup__input-error"> </span>
+      <label class="popup__formfield">
+        <input class="popup__input popup__input_type_profession" type="text" placeholder="Profession" id="profession" minlength="2" maxlength="200" required>
+        <span id="profession-error" class="popup__input-error"> </span>
       </label>
-        <button type='submit' className="popup__save">Save</button>
-        <button type='button' className='popup__close'></button>
+        <button type='submit' class="popup__save">Save</button>
+        <button type='button' class='popup__close'></button>
       </form>
     </div>
   </section>
 
-  <section className="popup popup_type_add-card" id="popup-template-form">
-    <div className="popup__square">
-      <form name="add-cards" className="popup__form popup__form_cards" novalidate>
-        <h1 className="popup__title">New Place</h1>
-        <label className="popup__formfield">
-          <input className="popup__input popup__input_type_title" type="text" placeholder="Title" id="cardTitle" name="cardTitle" minlength="1" maxlength="30" required>
-         <span id="cardTitle-error" className="popup__input-error"></span>
+  <section class="popup popup_type_add-card" id="popup-template-form">
+    <div class="popup__square">
+      <form name="add-cards" class="popup__form popup__form_cards" novalidate>
+        <h1 class="popup__title">New Place</h1>
+        <label class="popup__formfield">
+          <input class="popup__input popup__input_type_title" type="text" placeholder="Title" id="cardTitle" name="cardTitle" minlength="1" maxlength="30" required>
+         <span id="cardTitle-error" class="popup__input-error"></span>
         </label>
-        <label className="popup__formfield">
-          <input className="popup__input popup__input_type_link" type="url" placeholder="Link"  id="cardImageLink" name="cardImageLink"  required>
-          <span id="cardImageLink-error" className="popup__input-error"></span>
+        <label class="popup__formfield">
+          <input class="popup__input popup__input_type_link" type="url" placeholder="Link"  id="cardImageLink" name="cardImageLink"  required>
+          <span id="cardImageLink-error" class="popup__input-error"></span>
         </label>
-        <button type='submit' className="popup__save">Create</button>
-        <button type='button' className='popup__close popup__close_add'></button>
+        <button type='submit' class="popup__save">Create</button>
+        <button type='button' class='popup__close popup__close_add'></button>
       </form>
     </div>
   </section>
 
-  <section className="popup popup_type_avatar-change" id="popup-template-avatar">
-    <div className="popup__square">
-      <form name="avatarChange" className="popup__form popup__form_avatar" novalidate>
-        <h1 className="popup__title">Change Profile Picture</h1>
-        <label className="popup__formfield">
-          <input className="popup__input popup__input_type_link" type="url" placeholder="Picture Url"  id="link" name="link"  required>
-          <span id="link-error" className="popup__input-error"></span>
+  <section class="popup popup_type_avatar-change" id="popup-template-avatar">
+    <div class="popup__square">
+      <form name="avatarChange" class="popup__form popup__form_avatar" novalidate>
+        <h1 class="popup__title">Change Profile Picture</h1>
+        <label class="popup__formfield">
+          <input class="popup__input popup__input_type_link" type="url" placeholder="Picture Url"  id="link" name="link"  required>
+          <span id="link-error" class="popup__input-error"></span>
         </label>
-        <button type='submit' className="popup__save">Save</button>
-        <button type='button' className='popup__close popup__close_add'></button>
+        <button type='submit' class="popup__save">Save</button>
+        <button type='button' class='popup__close popup__close_add'></button>
       </form>
     </div>
   </section>
 
-  <section className="popup popup_type_confirm" id="popup-template-confirm">
-    <div className="popup__square">
-      <form name="confirmDelete" className="popup__form popup__form_confirmDelete">
-        <h1 className="popup__title popup__title_confirmDelete">Are you sure?</h1>
-        <button type='submit' className="popup__save popup__save_confirmDelete">Yes</button>
-        <button type='button' className='popup__close popup__close_add'></button>
+  <section class="popup popup_type_confirm" id="popup-template-confirm">
+    <div class="popup__square">
+      <form name="confirmDelete" class="popup__form popup__form_confirmDelete">
+        <h1 class="popup__title popup__title_confirmDelete">Are you sure?</h1>
+        <button type='submit' class="popup__save popup__save_confirmDelete">Yes</button>
+        <button type='button' class='popup__close popup__close_add'></button>
       </form>
     </div>
   </section>
 
-  <section className="popup popup_type-preview" id="popup-image">
-    <div className="popup__square popup__square_preview">
-      <button type='button' className='popup__close popup__close_preview'></button>
-      <img className="popup__image" src=" " alt=" ">
-      <p className="popup__subtitle"></p>
+  <section class="popup popup_type-preview" id="popup-image">
+    <div class="popup__square popup__square_preview">
+      <button type='button' class='popup__close popup__close_preview'></button>
+      <img class="popup__image" src=" " alt=" ">
+      <p class="popup__subtitle"></p>
     </div>
   </section>
-  <div className="page__content">
-    <header className="header">
-      <img className="header__logo" src="<%=require ('../src/images/logo-aroundtheus.svg')%>" alt="Logo text writes Around the U.S." />
+  <div class="page__content">
+    <header class="header">
+      <img class="header__logo" src="<%=require ('../src/images/logo-aroundtheus.svg')%>" alt="Logo text writes Around the U.S." />
     </header>
-    <main className="content">
-      <section className="profile">
-        <div className="profile__image" src="<%=require ('../src/images/image.jpg')>"></div>
+    <main class="content">
+      <section class="profile">
+        <div class="profile__image" src="<%=require ('../src/images/image.jpg')>"></div>
 
-        <div className="profile__info">
-          <div className="profile__line-header">
-            <h2 className="profile__header">Cousteau </h2>
-            <button type="button" className="profile__button"></button>
+        <div class="profile__info">
+          <div class="profile__line-header">
+            <h2 class="profile__header">Cousteau </h2>
+            <button type="button" class="profile__button"></button>
           </div>
-          <p className="profile__profession">Explorer</p>
+          <p class="profile__profession">Explorer</p>
         </div>
 
-        <button  type="button" className="add-button"></button>
+        <button  type="button" class="add-button"></button>
       </section>
 
-      <section className="elements page__section">
-        <ul className="elements__cards"></ul>
+      <section class="elements page__section">
+        <ul class="elements__cards"></ul>
       </section>
     </main>
-    <footer className="footer"><p className="footer__text">© 2022 Around The U.S.</p></footer>
+    <footer class="footer"><p class="footer__text">© 2022 Around The U.S.</p></footer>
     <template id="card-template">
-      <li className="elements__card">
-        <button className="elements__button-delete" type="button"></button>
-        <img className="elements__image" src=" " alt="" />
-        <div className="elements__handle">
-          <h2 className="elements__card-text"></h2>
-          <div className="elements__handle_likecolumn">
-            <button className="elements__button-like" type="button"></button>
-            <p className="elements__card_likes"></p>
+      <li class="elements__card">
+        <button class="elements__button-delete" type="button"></button>
+        <img class="elements__image" src=" " alt="" />
+        <div class="elements__handle">
+          <h2 class="elements__card-text"></h2>
+          <div class="elements__handle_likecolumn">
+            <button class="elements__button-like" type="button"></button>
+            <p class="elements__card_likes"></p>
           </div>
         </div>
       </li>
