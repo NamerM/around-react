@@ -45,7 +45,7 @@ return (
     <section className="elements page__section">
       <ul className="elements__cards">
         {cards.map((card, i) =>
-          <Card key={i} card={card} onClick={onCardClick} /> )}
+          <Card key={i} {...card} onClick={onCardClick} /> )}
       </ul>
     </section>
   </main>

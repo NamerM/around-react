@@ -72,7 +72,7 @@ function App() {
         </label>
       </PopupWithForm>
 
-
+      <ImagePopup Card={selectedCard} onClose={closeAllPopups} />
 
       <Header />
       <Main
@@ -83,8 +83,9 @@ function App() {
 
       />
       <Footer />
-      <Card />
-      <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+
+
+
     </div>
   );
 }
