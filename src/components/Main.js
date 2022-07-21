@@ -5,7 +5,8 @@ import addButton from '../images/add-button.svg';
 import api  from '../utils/Api.js';
 import Card from './Card';
 
-function Main({  onEditAvatarClick, onEditProfileClick, onAddPlaceClick, onCardClick}) {
+
+function Main({  onEditAvatarClick, onEditProfileClick, onAddPlaceClick, onCardClick, handleClick}) { //handleCardClick
 
   const [userName, setUserName] = React.useState('');
   const [userProfession, setUserProfession] = React.useState('');

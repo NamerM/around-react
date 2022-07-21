@@ -5,7 +5,7 @@ import Main from '../components/Main.js';
 import Footer from '../components/Footer.js';
 import PopupWithForm from '../components/PopupWithForm.js'
 import ImagePopup from './ImagePopup.js';
-import Card from './Card.js';
+//import Card from './Card.js';
 
 import '../index.js';
 
