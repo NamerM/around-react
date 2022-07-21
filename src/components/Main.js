@@ -5,7 +5,7 @@ import addButton from '../images/add-button.svg';
 import api  from '../utils/Api.js';
 import Card from './Card';
 
-function Main({  onEditAvatarClick, onEditProfileClick, onAddPlaceClick, onCardClick}) {
+function Main({  onEditAvatarClick, onEditProfileClick, onAddPlaceClick, onCardClick, handleClick}) {
 
   const [userName, setUserName] = React.useState('');
   const [userProfession, setUserProfession] = React.useState('');
@@ -45,7 +45,7 @@ return (
     <section className="elements page__section">
       <ul className="elements__cards">
         {cards.map((card, i) =>
-          <Card key={i} {...card} onClick={onCardClick} /> )}
+          <Card key={i} {...card} onClick={handleClick} /> )}
       </ul>
     </section>
   </main>
