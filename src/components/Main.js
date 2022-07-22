@@ -13,7 +13,7 @@ function Main({
 }) {
   const [userName, setUserName] = React.useState("");
   const [userProfession, setUserProfession] = React.useState("");
-  const [userAvatar, setUserAvatar] = React.useState();
+  const [userAvatar, setUserAvatar] = React.useState("");
   const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
@@ -75,8 +75,8 @@ function Main({
 
       <section className="elements page__section">
         <ul className="elements__cards">
-         {cards.map((card, _id) => (
-            <Card key={_id} card={card} onClick={onCardClick} />
+         {cards.map((card) => (
+            <Card key={card._id} card={card} onClick={onCardClick} />
           ))}
         </ul>
       </section>
