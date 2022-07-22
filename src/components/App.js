@@ -65,7 +65,7 @@ function App() {
           </label>
         </PopupWithForm>
 
-        <PopupWithForm title="Change Profile Picture" name="avatar-change" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} buttonText = "Change">
+      <PopupWithForm title="Change Profile Picture" name="avatar-change" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} buttonText = "Change">
         <label className="popup__formfield">
           <input className="popup__input popup__input_type_link" type="url" placeholder="Picture Url"  id="link" name="link"  required />
           <span id="link-error" className="popup__input-error"></span>
