@@ -49,7 +49,7 @@ class Api {
     .then(this._checkResponse)
   } //name  & link in the body check m.
 
-  addCard(name, link) {
+  addCard(name, link,) {
     return fetch(this._baseUrl + '/cards', {
       method: "POST",
       headers: this._headers,
