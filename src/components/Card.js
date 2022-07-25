@@ -6,6 +6,7 @@ function Card({ card, onClick }) {
 
   function handleClick() {
    onClick(card);
+   //console.log(card);
   }
 
 return (
