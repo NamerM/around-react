@@ -14,9 +14,7 @@ class Api {
     return fetch(this._baseUrl + '/users/me', {
       headers: this._headers
     }).then(this._checkResponse)
-    // .catch(err => {
-    //   console.log('Api has an error!!!')
-    // })
+      .catch(console.log)
   }
 
   editProfile = (name, about) => {

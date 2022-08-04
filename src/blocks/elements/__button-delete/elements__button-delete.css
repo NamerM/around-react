@@ -21,3 +21,13 @@
   opacity: 0.5;
   cursor: pointer;
 }
+
+
+.elements__button-delete_visible {
+  display:block;
+}
+
+
+.elements__button-delete_hidden {
+  display: hidden;
+}
