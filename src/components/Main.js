@@ -27,22 +27,21 @@ function Main({
 
     //{/* handeLikeClick card._id olduğundan burada sadece id objecti gerekiyor bize api.dele velike card._id card return card*/}
   function handleCardLike(card) {
+    const isLiked = card.likes.some(user => user._id === currentUser._id);
 
-    const isLiked = card.likes.some(user => user._id === currentUser._id);    // card yerine card
-      api.addLike(card._id, !isLiked).then((newCard) => {
-        setCards((state) => state.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
-      });
-    // if(isLiked) {
-    //   api.deleteCard(card)
-    //   } else {
-    //   api.addLike(card)
-    //      .then(likedCard => {
-    //       const newCards = cards.map(card => {
-    //         return card == likedCard._id ? likedCard : card
-    //       })
-    //       setCards(newCards)
-    //      })
-    //   }
+    api.cardLikeStatusChange(card._id, !isLiked).then((newCard) => {
+      setCards((state) => state.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
+    });
+      // if(isLiked) {
+      //   api.removeLike(card._id).then((newCard) => {
+      //     setCards((state) => state.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
+      //   });
+      // }   else {
+      //   api.addLike(card._id).then((newCard) => {
+      //     setCards((state) => state.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
+      //   });
+      // }
+
 
   }
 
@@ -54,8 +53,9 @@ function Main({
        })
    }
 
+  // below works as well
   // function handleCardDelete(card) {
-  //   api.deleteCard(card._id).then(() => {
+  //   api.deleteCard(card).then(res => {
   //     setCards(cards.filter(stateCard => stateCard !== card));
   //   });
   // }

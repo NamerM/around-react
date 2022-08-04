@@ -75,6 +75,15 @@ class Api {
     .then(this._checkResponse)
   }
 
+  cardLikeStatusChange = (id, isLiked) => {
+    const method = !isLiked ? "DELETE" : "PUT";
+    return fetch(`${this._baseUrl}/cards/likes/${id}`, {
+    method: method,
+    headers: this._headers
+    })
+    .then(res => this._checkResponse(res))
+  }
+
   deleteCard(id) {
     return fetch(this._baseUrl + '/cards/' + id, {
       method: "DELETE",
