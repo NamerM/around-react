@@ -29,21 +29,21 @@ function Main({
   function handleCardLike(card) {
 
     const isLiked = card.likes.some(user => user._id === currentUser._id);    // card yerine card
+      api.addLike(card._id, !isLiked).then((newCard) => {
+        setCards((state) => state.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
+      });
+    // if(isLiked) {
+    //   api.deleteCard(card)
+    //   } else {
+    //   api.addLike(card)
+    //      .then(likedCard => {
+    //       const newCards = cards.map(card => {
+    //         return card == likedCard._id ? likedCard : card
+    //       })
+    //       setCards(newCards)
+    //      })
+    //   }
 
-    if(isLiked) {
-      api.deleteCard(card)
-      } else {
-      api.addLike(card)
-         .then(likedCard => {
-          const newCards = cards.map(card => {
-            return card == likedCard._id ? likedCard : card
-          }) // [{}, {}, {}, {...}]
-          setCards(newCards)
-         })
-      }
-      //   api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
-      //     setCards((state) => state.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
-      // });
   }
 
   function handleCardDelete(card) {
