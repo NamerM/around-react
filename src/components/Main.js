@@ -12,8 +12,6 @@ function Main({
   onEditProfileClick,
   onAddPlaceClick,
   onCardClick,
-  onCardLike,
-  onCardDelete,
 }) {
 
   const currentUser = React.useContext(CurrentUserContext)

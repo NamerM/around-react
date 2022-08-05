@@ -7,6 +7,7 @@ function PopupWithForm({
   buttonText = "Save",
   onClose,
   children,
+  onSubmit,
 }) {
   //arguments in popupwithform function
 
@@ -16,7 +17,7 @@ function PopupWithForm({
         <form className="popup__form" name={name}>
           <h1 className="popup__title">{title}</h1>
           {children}
-          <button type="submit" className="popup__save">
+          <button type="submit" className="popup__save" onSubmit={onSubmit}>
             {buttonText}
           </button>
           <button

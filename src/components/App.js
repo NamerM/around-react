@@ -5,6 +5,7 @@ import Main from '../components/Main.js';
 import Footer from '../components/Footer.js';
 import PopupWithForm from '../components/PopupWithForm.js'
 import ImagePopup from './ImagePopup.js';
+import EditProfilePopup from './EditProfilePopup.js';
 import api from  "../utils/Api.js";
 
 import { CurrentUserContext } from './contexts/CurrentUserContext.js';
@@ -17,6 +18,7 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen ] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState(undefined);
+
 
 
   React.useEffect(() => {  //useEffect başına React. eklendi
@@ -54,20 +56,22 @@ function App() {
     setSelectedCard(card);
   }
 
+  function handleUpdateUser({name, about}){
+    api.editProfile(name, about)
+      .then( res => {
+        setCurrentUser(res)
+        closeAllPopups()
+      })
+  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page__content">
-        <PopupWithForm title="Edit Profile" name="profile" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}>
-          <label className="popup__formfield">
-            <input className="popup__input popup__input_type_name" type="text" placeholder="Name" id="name" minLength="2" maxLength="40" required/>
-            <span id="name-error" className="popup__input-error"></span>
-          </label>
-          <label className="popup__formfield">
-            <input className="popup__input popup__input_type_profession" type="text" placeholder="Profession" id="profession" minLength="2" maxLength="200" required/>
-            <span id="profession-error" className="popup__input-error"> </span>
-          </label>
-        </PopupWithForm>
+        <EditProfilePopup
+          isOpen={isEditProfilePopupOpen}
+          onClose={closeAllPopups}
+          onUpdateUser={handleUpdateUser}
+        />
 
         <PopupWithForm title="New Place" name="add-card" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} buttonText ="Create">
           <label className="popup__formfield">
@@ -105,3 +109,15 @@ function App() {
 }
 
 export default App;
+
+
+// <PopupWithForm title="Edit Profile" nam  e="profile" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}> {/* <EditProfilePopup>  */}
+// <label className="popup__formfield">
+//   <input className="popup__input popup__input_type_name" type="text" placeholder="Name" id="name" minLength="2" maxLength="40" required/>
+//   <span id="name-error" className="popup__input-error"></span>
+// </label>
+// <label className="popup__formfield">
+//   <input className="popup__input popup__input_type_profession" type="text" placeholder="Profession" id="profession" minLength="2" maxLength="200" required/>
+//   <span id="profession-error" className="popup__input-error"> </span>
+// </label>
+// </PopupWithForm>
