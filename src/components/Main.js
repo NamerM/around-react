@@ -32,33 +32,14 @@ function Main({
     api.cardLikeStatusChange(card._id, !isLiked).then((newCard) => {
       setCards((state) => state.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
     });
-      // if(isLiked) {
-      //   api.removeLike(card._id).then((newCard) => {
-      //     setCards((state) => state.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
-      //   });
-      // }   else {
-      //   api.addLike(card._id).then((newCard) => {
-      //     setCards((state) => state.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
-      //   });
-      // }
-
 
   }
 
   function handleCardDelete(card) {
-    api.deleteCard(card)
-       .then(res => {
-          const newCards = cards.filter(card => card._id !== card  ) // update of card with 3 objects  [{}, {}, {}]
-          setCards(newCards)
-       })
+    api.deleteCard(card).then(() => {
+      setCards((state) => state.filter((cards) => cards._id !== card))
+    });
    }
-
-  // below works as well
-  // function handleCardDelete(card) {
-  //   api.deleteCard(card).then(res => {
-  //     setCards(cards.filter(stateCard => stateCard !== card));
-  //   });
-  // }
 
   return (
     <main className="content">
