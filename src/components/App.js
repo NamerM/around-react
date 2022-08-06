@@ -6,6 +6,7 @@ import Footer from '../components/Footer.js';
 import PopupWithForm from '../components/PopupWithForm.js'
 import ImagePopup from './ImagePopup.js';
 import EditProfilePopup from './EditProfilePopup.js';
+import EditAvatarPopup from './EditAvatarPopup.js';
 import api from  "../utils/Api.js";
 
 import { CurrentUserContext } from './contexts/CurrentUserContext.js';
@@ -13,7 +14,7 @@ import { CurrentUserContext } from './contexts/CurrentUserContext.js';
 import '../index.js';
 
 function App() {
-  const [currentUser, setCurrentUser] = React.useState({});
+  const [currentUser, setCurrentUser] = React.useState({});   // {name, about, avatar }
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen ] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
@@ -60,9 +61,17 @@ function App() {
     api.editProfile(name, about)
       .then( res => {
         setCurrentUser({
-          name: res.name,
-          about: res.about,
-        })
+          ...currentUser, name: res.name, about: res.about })
+        closeAllPopups()
+      })
+      .catch(console.log)
+  }
+
+  function handleUpdateAvatar({avatar}) {
+    api.editAvatar(avatar)
+      .then( res => {
+        //console.log(res.avatar)
+        setCurrentUser({...currentUser, avatar: res.avatar })
         closeAllPopups()
       })
       .catch(console.log)
@@ -88,12 +97,11 @@ function App() {
             </label>
           </PopupWithForm>
 
-        <PopupWithForm title="Change Profile Picture" name="avatar-change" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} buttonText = "Change">
-          <label className="popup__formfield">
-            <input className="popup__input popup__input_type_link" type="url" placeholder="Picture Url"  id="link" name="link"  required />
-            <span id="link-error" className="popup__input-error"></span>
-          </label>
-        </PopupWithForm>
+        <EditAvatarPopup
+          isOpen={isEditAvatarPopupOpen}
+          onClose={closeAllPopups}
+          onUpdateAvatar={handleUpdateAvatar}
+        />
 
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
 

@@ -54,8 +54,3 @@ return(
 
 export default EditProfilePopup;
 
-//  function handleProfessionChange(e) {  //{value: e.target.value}
-//     setDescription(prev => ({ [e.target.name]: e.target.value }));
-//   }
-//onChange={e => setName(e.target.value)}
-//onChange={e => setDescription(e.target.value)}
