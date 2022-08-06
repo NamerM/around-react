@@ -1,9 +1,7 @@
 import React from "react";
-// import profileImage from '../images/image.jpg';
 import profileButton from "../images/edit-pen.svg";
 import addButton from "../images/add-button.svg";
 import Card from "./Card";
-//import {cards, handleCardDelete, handleCardLike} from "./App";
 
 import { CurrentUserContext } from './contexts/CurrentUserContext.js';
 

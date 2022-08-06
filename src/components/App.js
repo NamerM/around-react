@@ -2,14 +2,15 @@ import React  from 'react';
 import Header from '../components/Header.js';
 import Main from '../components/Main.js';
 import Footer from '../components/Footer.js';
-import PopupWithForm from '../components/PopupWithForm.js'
 import ImagePopup from './ImagePopup.js';
 import EditProfilePopup from './EditProfilePopup.js';
 import EditAvatarPopup from './EditAvatarPopup.js';
+import AddPlacePopup from './AddPlacePopup.js';
 import api from  "../utils/Api.js";
 
 import { CurrentUserContext } from './contexts/CurrentUserContext.js';
 import '../index.js';
+
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState({});   // {name, about, avatar }
@@ -26,7 +27,8 @@ function App() {
         setCurrentUser(res);
       })
     api.getInitialCards()
-      .then( res => {        // [{ name, link, _id, owner }] => [{ title, url, _id, owner}]
+      .then( res => {
+        //const formattedCard = res.map((card) => ({ title: card.name, url: card.link}))
         setCards(res);
       })
       .catch(console.log);
@@ -88,7 +90,6 @@ function App() {
     api.cardLikeStatusChange(card._id, !isLiked).then((newCard) => {
       setCards((state) => state.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
     });
-
   }
 
   function handleCardDelete(card) {
@@ -96,6 +97,16 @@ function App() {
       setCards((state) => state.filter((cards) => cards._id !== card))
     });
    }
+
+   function handleAddPlaceSubmit({ name, link }) {
+    api.addCard(name, link)
+    .then( res => {
+      const newCard = { title: res.name, url: res.link}
+      console.log(newCard);
+      setCards([newCard , ...cards, ]);
+    })
+
+    }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -105,21 +116,17 @@ function App() {
           onClose={closeAllPopups}
           onUpdateUser={handleUpdateUser}
         />
-        <PopupWithForm title="New Place" name="add-card" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} buttonText ="Create">
-          <label className="popup__formfield">
-            <input className="popup__input popup__input_type_title" type="text" placeholder="Title" id="cardTitle" name="cardTitle" minLength="1" maxLength="30" required />
-            <span id="cardTitle-error" className="popup__input-error"></span>
-          </label>
-          <label className="popup__formfield">
-            <input className="popup__input popup__input_type_link" type="url" placeholder="Link"  id="cardImageLink" name="cardImageLink"  required/>
-            <span id="cardImageLink-error" className="popup__input-error"></span>
-          </label>
-        </PopupWithForm>
         <EditAvatarPopup
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
           onUpdateAvatar={handleUpdateAvatar}
         />
+        <AddPlacePopup
+          isOpen={isAddPlacePopupOpen}
+          onClose={closeAllPopups}
+          onAddPlaceSubmit={handleAddPlaceSubmit}
+        />
+
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
         <Header />
         <Main
