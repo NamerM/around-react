@@ -3,7 +3,7 @@ import profileButton from "../images/edit-pen.svg";
 import addButton from "../images/add-button.svg";
 import Card from "./Card";
 
-import { CurrentUserContext } from './contexts/CurrentUserContext.js';
+import { CurrentUserContext } from '../../src/contexts/CurrentUserContext'
 
 function Main({
   onEditAvatarClick,

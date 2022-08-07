@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { CurrentUserContext } from './contexts/CurrentUserContext.js';
+import { CurrentUserContext } from '../../src/contexts/CurrentUserContext'
 import PopupWithForm from './PopupWithForm.js';
 
 

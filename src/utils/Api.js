@@ -104,4 +104,4 @@ const api = new Api({
   }
 }); // this._baseUrl // this._headers
 
-export default api
+export default api;
