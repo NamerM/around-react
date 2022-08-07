@@ -19,7 +19,7 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState(undefined);   // gerekirse cards, setCards değiştir ln 53 , 57 110
   const [cards, setCards] = React.useState([]);
-
+  const [submitButtonEffect, setSubmitButtonEffect] =React.useState(false);
 
   React.useEffect(() => {  //useEffect başına React. eklendi
     api.getUserInfo()
@@ -59,6 +59,7 @@ function App() {
   }
 
   function handleUpdateUser({name, about}){
+    setSubmitButtonEffect(true)
     api.editProfile(name, about)
       .then( res => {
         setCurrentUser({
@@ -67,18 +68,20 @@ function App() {
       .catch(console.log)
       .finally(() => {
         closeAllPopups()
+        setSubmitButtonEffect(false)
       })
   }
 
   function handleUpdateAvatar({avatar}) {
+    setSubmitButtonEffect(true)
     api.editAvatar(avatar)
       .then( res => {
-        //console.log(res.avatar)
         setCurrentUser({...currentUser, avatar: res.avatar })
       })
       .catch(console.log)
       .finally(() => {
         closeAllPopups()
+        setSubmitButtonEffect(false)
       })
   }
 
@@ -98,12 +101,14 @@ function App() {
    }
 
   function handleAddPlaceSubmit({ name, link }) {
+    setSubmitButtonEffect(true)
     api.addCard(name, link)
       .then( res => {
         setCards([res, ...cards ]);
       })
       .finally(() => {
         closeAllPopups()
+        setSubmitButtonEffect(false)
       })
     }
 
@@ -116,17 +121,19 @@ function App() {
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
           onUpdateUser={handleUpdateUser}
+          isLoading={submitButtonEffect}
         />
         <EditAvatarPopup
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
           onUpdateAvatar={handleUpdateAvatar}
+          isLoading={submitButtonEffect}
         />
         <AddPlacePopup
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
           onAddPlaceSubmit={handleAddPlaceSubmit}
-
+          isLoading={submitButtonEffect}
         />
 
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />

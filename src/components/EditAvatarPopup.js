@@ -3,7 +3,7 @@ import PopupWithForm from './PopupWithForm.js';
 
 
 
-function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar}){
+function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isLoading}){
   const avatarRef =  useRef() //undefined than defined { current: ?}  console.log check
 
   function handleSubmit(e) {
@@ -23,8 +23,9 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar}){
     name="avatar-change"
     isOpen={isOpen}
     onClose={onClose}
-    buttonText = "Change"
+    buttonText = "Change Avatar"
     onSubmit={handleSubmit}
+    isLoading={isLoading}
   >
   <label className="popup__formfield">
     <input className="popup__input popup__input_type_link" ref={avatarRef} type="url" placeholder="Picture Url"  id="link" name="link"  required />

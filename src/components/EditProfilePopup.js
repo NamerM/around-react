@@ -3,7 +3,7 @@ import { CurrentUserContext } from './contexts/CurrentUserContext.js';
 import PopupWithForm from './PopupWithForm.js';
 
 
-function EditProfilePopup({ isOpen, onClose, onUpdateUser}){
+function EditProfilePopup({ isOpen, onClose, onUpdateUser, isLoading}){
   const currentUser = React.useContext(CurrentUserContext)
 
   const [name, setName] = useState(currentUser.name || '');                 // useState('')
@@ -38,6 +38,7 @@ return(
     isOpen={isOpen}
     onClose={onClose}
     onSubmit={handleSubmit}
+    isLoading={isLoading}
   >
     <label className="popup__formfield">
       <input className="popup__input popup__input_type_name" value={name || ''} onChange={handleNameChange} type="text" placeholder="Name" id="name" minLength="2" maxLength="40" required/>
