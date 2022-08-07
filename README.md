@@ -19,4 +19,5 @@ React & Data usage exercised with multiple functions and their corresponding api
 
 
 **GitHub**
-https://namerm.github.io/web_project_4
+https://namerm.github.io/around-react
+
