@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PopupWithForm from './PopupWithForm.js';
 import { CurrentUserContext } from './contexts/CurrentUserContext.js';
 
-function AddPlacePopup({ isOpen, onClose, onAddPlaceSubmit }){
+function AddPlacePopup({ isOpen, onClose, onAddPlaceSubmit, isLoading }){
   const currentUser = React.useContext(CurrentUserContext)
 
   const [cardName, setCardName] = useState('');
@@ -38,13 +38,14 @@ function AddPlacePopup({ isOpen, onClose, onAddPlaceSubmit }){
       onClose={onClose}
       buttonText ="Create"
       onSubmit={handleSubmit}
+      isLoading={isLoading}
     >
     <label className="popup__formfield">
-      <input className="popup__input popup__input_type_title" value={cardName || ''} onChange={handleAddCardName} type="text" placeholder="Title" id="cardTitle" name="cardTitle" minLength="1" maxLength="30" required />
+      <input className="popup__input popup__input_type_title"  value={cardName || ''} onChange={handleAddCardName} type="text" placeholder="Title" id="cardTitle" name="cardTitle" minLength="1" maxLength="30" required />
       <span id="cardTitle-error" className="popup__input-error"></span>
     </label>
     <label className="popup__formfield">
-      <input className="popup__input popup__input_type_link" value={cardLink || ''} onChange={handleAddCardLink} type="url" placeholder="Link"  id="cardImageLink" name="cardImageLink"  required/>
+      <input className="popup__input popup__input_type_link"  value={cardLink || ''} onChange={handleAddCardLink} type="url" placeholder="Link"  id="cardImageLink" name="cardImageLink"  required/>
       <span id="cardImageLink-error" className="popup__input-error"></span>
     </label>
   </PopupWithForm>

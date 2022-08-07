@@ -5,9 +5,11 @@ function Card({ card, onClick, onCardLike, onCardDelete }) { // card = { title, 
   const { name, link} = card;
   const currentUser = React.useContext(CurrentUserContext)  // currentUser.name currentUser.link
 
+
+
   function handleClick() {
    onClick(card);
-   //console.log(card);
+   console.log(card);
   }
 
   const isOwn = card.owner._id === currentUser._id;

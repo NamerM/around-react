@@ -28,7 +28,6 @@ function App() {
       })
     api.getInitialCards()
       .then( res => {
-        //const formattedCard = res.map((card) => ({ title: card.name, url: card.link}))
         setCards(res);
       })
       .catch(console.log);
@@ -98,15 +97,17 @@ function App() {
     });
    }
 
-   function handleAddPlaceSubmit({ name, link }) {
+  function handleAddPlaceSubmit({ name, link }) {
     api.addCard(name, link)
-    .then( res => {
-      const newCard = { title: res.name, url: res.link}
-      console.log(newCard);
-      setCards([newCard , ...cards, ]);
-    })
-
+      .then( res => {
+        setCards([res, ...cards ]);
+      })
+      .finally(() => {
+        closeAllPopups()
+      })
     }
+
+
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -125,6 +126,7 @@ function App() {
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
           onAddPlaceSubmit={handleAddPlaceSubmit}
+
         />
 
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />

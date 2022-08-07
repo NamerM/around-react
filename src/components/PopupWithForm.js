@@ -8,6 +8,7 @@ function PopupWithForm({
   onClose,
   children,
   onSubmit,
+  isLoading
 }) {
   //arguments in popupwithform function
 
@@ -18,7 +19,10 @@ function PopupWithForm({
           <h1 className="popup__title">{title}</h1>
           {children}
           <button type="submit" className="popup__save" >
-            {buttonText}
+            {
+              isLoading ? 'Loading...' : (buttonText)
+            }
+
           </button>
           <button
             type="button" className="popup__close" onClick={onClose}></button>
