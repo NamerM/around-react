@@ -6,7 +6,7 @@ import ImagePopup from './ImagePopup.js';
 import EditProfilePopup from './EditProfilePopup.js';
 import EditAvatarPopup from './EditAvatarPopup.js';
 import AddPlacePopup from './AddPlacePopup.js';
-import api from '../utils/api.js';
+import api from '../../src/utils/api';
 
 import { CurrentUserContext } from '../../src/contexts/CurrentUserContext'
 import '../index.js';
@@ -17,11 +17,11 @@ function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen ] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
-  const [selectedCard, setSelectedCard] = React.useState(undefined);   // gerekirse cards, setCards değiştir ln 53 , 57 110
+  const [selectedCard, setSelectedCard] = React.useState(undefined);
   const [cards, setCards] = React.useState([]);
   const [submitButtonEffect, setSubmitButtonEffect] =React.useState(false);
 
-  React.useEffect(() => {  //useEffect başına React. eklendi
+  React.useEffect(() => {
     api.getUserInfo()
       .then( res => {  // { data: { name, avatar, about, _id}}
         setCurrentUser(res);

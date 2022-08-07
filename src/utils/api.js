@@ -91,10 +91,7 @@ class Api {
     })
     .then(this._checkResponse)
   }
-
 }
-
-
 
 const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/cohort-3-en",
@@ -102,6 +99,6 @@ const api = new Api({
     authorization: "9398a483-484e-4ebd-a374-b6b3b985e9c4",
     "Content-Type": "application/json"
   }
-}); // this._baseUrl // this._headers
+}) // this._baseUrl // this._headers
 
 export default api;
