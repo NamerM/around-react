@@ -123,10 +123,10 @@ function App() {
     api.addCard(name, link)
       .then( res => {
         setCards([res, ...cards ]);
+        closeAllPopups()
       })
       .catch(console.log)
       .finally(() => {
-        closeAllPopups()
         setSubmitButtonEffect(false)
       })
     }
