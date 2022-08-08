@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PopupWithForm from './PopupWithForm.js';
-import { CurrentUserContext } from '../../src/contexts/CurrentUserContext'
 
 function AddPlacePopup({ isOpen, onClose, onAddPlaceSubmit, isLoading }){
-  const currentUser = React.useContext(CurrentUserContext)
 
   const [cardName, setCardName] = useState('');
   const [cardLink , setCardLink] = useState('');
