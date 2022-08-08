@@ -14,7 +14,6 @@ class Api {
     return fetch(this._baseUrl + '/users/me', {
       headers: this._headers
     }).then(this._checkResponse)
-      .catch(console.log)
   }
 
   editProfile = (name, about) => {

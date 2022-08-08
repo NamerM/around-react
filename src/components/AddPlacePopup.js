@@ -8,10 +8,11 @@ function AddPlacePopup({ isOpen, onClose, onAddPlaceSubmit, isLoading }){
   const [cardName, setCardName] = useState('');
   const [cardLink , setCardLink] = useState('');
 
+
   useEffect(() => {
-    setCardName(currentUser.name)
-    setCardLink(currentUser.link)
-  }, [currentUser])
+    setCardName('')
+    setCardLink('')
+  }, [isOpen])
 
   function handleSubmit(e){
 
@@ -41,11 +42,11 @@ function AddPlacePopup({ isOpen, onClose, onAddPlaceSubmit, isLoading }){
       isLoading={isLoading}
     >
     <label className="popup__formfield">
-      <input className="popup__input popup__input_type_title"  value={cardName || ''} onChange={handleAddCardName} type="text" placeholder="Title" id="cardTitle" name="cardTitle" minLength="1" maxLength="30" required />
+      <input className="popup__input popup__input_type_title"  value={cardName} onChange={handleAddCardName} type="text" placeholder="Title" id="cardTitle" name="cardTitle" minLength="1" maxLength="30" required />
       <span id="cardTitle-error" className="popup__input-error"></span>
     </label>
     <label className="popup__formfield">
-      <input className="popup__input popup__input_type_link"  value={cardLink || ''} onChange={handleAddCardLink} type="url" placeholder="Link"  id="cardImageLink" name="cardImageLink"  required/>
+      <input className="popup__input popup__input_type_link"  value={cardLink} onChange={handleAddCardLink} type="url" placeholder="Link"  id="cardImageLink" name="cardImageLink"  required/>
       <span id="cardImageLink-error" className="popup__input-error"></span>
     </label>
   </PopupWithForm>

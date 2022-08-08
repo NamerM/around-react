@@ -26,6 +26,7 @@ function App() {
       .then( res => {  // { data: { name, avatar, about, _id}}
         setCurrentUser(res);
       })
+      .catch(console.log);
     api.getInitialCards()
       .then( res => {
         setCards(res);
@@ -33,6 +34,17 @@ function App() {
       .catch(console.log);
     }, [])
 
+  React.useEffect(() => {
+      const closeByEscape = (e) => {
+        if (e.key === 'Escape') {
+          closeAllPopups();
+        }
+      }
+
+      document.addEventListener('keydown', closeByEscape)
+
+      return () => document.removeEventListener('keydown', closeByEscape)
+  }, [])
 
 
   function handleEditAvatarClick() {
@@ -54,6 +66,9 @@ function App() {
     setSelectedCard(undefined);
   }
 
+
+
+
   function handleCardClick(card) {
     setSelectedCard(card);
   }
@@ -62,12 +77,11 @@ function App() {
     setSubmitButtonEffect(true)
     api.editProfile(name, about)
       .then( res => {
-        setCurrentUser({
-          ...currentUser, name: res.name, about: res.about })
+        setCurrentUser(res);
+        closeAllPopups()
       })
       .catch(console.log)
       .finally(() => {
-        closeAllPopups()
         setSubmitButtonEffect(false)
       })
   }
@@ -76,11 +90,11 @@ function App() {
     setSubmitButtonEffect(true)
     api.editAvatar(avatar)
       .then( res => {
-        setCurrentUser({...currentUser, avatar: res.avatar })
+        setCurrentUser(res);
+        closeAllPopups()
       })
       .catch(console.log)
       .finally(() => {
-        closeAllPopups()
         setSubmitButtonEffect(false)
       })
   }
@@ -89,15 +103,19 @@ function App() {
   function handleCardLike(card) {
     const isLiked = card.likes.some(user => user._id === currentUser._id);
 
-    api.cardLikeStatusChange(card._id, !isLiked).then((newCard) => {
-      setCards((state) => state.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
-    });
+    api.cardLikeStatusChange(card._id, !isLiked)
+      .then((newCard) => {
+        setCards((state) => state.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
+      })
+      .catch(console.log)
   }
 
   function handleCardDelete(card) {
-    api.deleteCard(card).then(() => {
-      setCards((state) => state.filter((cards) => cards._id !== card))
-    });
+    api.deleteCard(card)
+      .then(() => {
+        setCards((state) => state.filter((cards) => cards._id !== card))
+      })
+      .catch(console.log)
    }
 
   function handleAddPlaceSubmit({ name, link }) {
@@ -106,6 +124,7 @@ function App() {
       .then( res => {
         setCards([res, ...cards ]);
       })
+      .catch(console.log)
       .finally(() => {
         closeAllPopups()
         setSubmitButtonEffect(false)
