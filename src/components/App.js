@@ -99,7 +99,7 @@ function App() {
       })
   }
 
-
+      //{/* handeLikeClick card._id olduğundan burada sadece id objecti gerekiyor bize api.dele velike card._id card return card*/}
   function handleCardLike(card) {
     const isLiked = card.likes.some(user => user._id === currentUser._id);
 

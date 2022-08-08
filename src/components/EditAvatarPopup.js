@@ -4,7 +4,11 @@ import PopupWithForm from './PopupWithForm.js';
 
 
 function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isLoading}){
-  const avatarRef =  useRef() //undefined than defined { current: ?}  console.log check
+  const avatarRef =  useRef()
+
+  React.useEffect(() => {    // thanks I got the idea and checked over +
+    avatarRef.current.value =""
+  }, [isOpen])
 
   function handleSubmit(e) {
     const avatarValue = avatarRef.current.value;
